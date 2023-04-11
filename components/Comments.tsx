@@ -4,12 +4,12 @@ import parse from 'react-html-parser';
 import {Comment} from './components-type'
 import {getComments} from '../serveces'
 import {comment} from 'postcss'
-const Comment = ({slug}) => {
+const Comment = ({slug}:any) => {
     const [comments, setComments] = useState<Comment[]>([]);
 
     useEffect(() => {
         getComments(slug).then((result) => {
-        setComments(result)})
+         setComments(result);})
     }, )
     return (
         <> {
@@ -25,7 +25,7 @@ const Comment = ({slug}) => {
                     {
                     comments.map((comment) => (
                         <div key={
-                                comment.createAt
+                                comment.createdAt
                             }
                             className='border-b border-gra-100 mb-4 pb-4'>
                             <p className='mb-4'>
@@ -35,7 +35,7 @@ const Comment = ({slug}) => {
                                 } </span>
                                 {' '}on {' '}
                                 {
-                                moment(comment.createAt).format('MMM DD, YY')
+                                moment(comment.createdAt).format('MMM DD, YY')
                             } </p>
                             <p className='whitespace-pre-line text-gray-600 w-full'>
                                 {

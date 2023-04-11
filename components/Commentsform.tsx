@@ -13,7 +13,7 @@ const data: formdata = {
     comment: "",
     storeData: false
 }
-const Commentsform = ({slug}) => {
+const Commentsform = ({slug}:any) => {
     const [error, setError] = useState(false)
     const [localStorage, setLocalStorage] = useState(null);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false)
