@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import moment from 'moment'
-import parse from 'html-react-parser';
+import parse from 'react-html-parser';
 import {Comment} from './components-type'
 import {getComments} from '../serveces'
 import {comment} from 'postcss'

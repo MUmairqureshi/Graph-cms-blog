@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {submitComment} from '../serveces/index'
 type formdata = {
     name: string,

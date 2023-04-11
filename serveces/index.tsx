@@ -1,7 +1,7 @@
 import { request , gql } from "graphql-request"
 import {Categories, Post, IPostsData , Featured} from '../components/components-type' 
 import { graphqlClient } from "./client";
-// import Home from ./../page
+
 import React from 'react'
 const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
  
