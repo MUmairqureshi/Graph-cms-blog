@@ -23,6 +23,7 @@ export interface IPostsData {
     content: {
       raw: any;
     }; 
+    comments?: Comment
   }
   export interface Featured{
     author: Author 

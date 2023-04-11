@@ -1,5 +1,5 @@
 import { request , gql } from "graphql-request"
-import {Categories, Post, IPostsData , Featured} from '../components/components-type' 
+import {Categories, Post, IPostsData , Featured , Comment} from '../components/components-type' 
 import { graphqlClient } from "./client";
 
 import React from 'react'
@@ -70,7 +70,7 @@ export const getPostDetails = async (slug : string) => {
     }
   }
   `;
-  const data: { post: IPost } = await graphqlClient.request(query, {
+  const data: { post: Post } = await graphqlClient.request(query, {
     slug,
   });
   return data.post;
@@ -139,7 +139,7 @@ export const getRecentPosts = async ( )=>{
     }
   }
   `
-const result : {posts :IPost[]} = await  graphqlClient.request(query);
+const result : {posts :Post[]} = await  graphqlClient.request(query);
 return result.posts
 } 
 export const getSimilarPosts = async (categories : string[], slug : string[]) => {
@@ -158,7 +158,7 @@ export const getSimilarPosts = async (categories : string[], slug : string[]) =>
       }
     }
   `;
-  const data : {posts: IPost[]} = await  graphqlClient.request(query, {
+  const data : {posts: Post[]} = await  graphqlClient.request(query, {
     categories,
     slug,
   
@@ -215,7 +215,7 @@ export const getComments  = async (slug : string) => {
     }
   }
   `
-  const result : {comments : Categories[]} = await  graphqlClient.request(query , {
+  const result : {comments : Comment[]} = await  graphqlClient.request(query , {
     slug
   })
   return result.comments

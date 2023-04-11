@@ -9,7 +9,7 @@ const Comment = ({slug}:any) => {
 
     useEffect(() => {
         getComments(slug).then((result) => {
-         setComments(result);})
+         setComments(result)})
     }, )
     return (
         <> {

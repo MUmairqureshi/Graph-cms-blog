@@ -1,13 +1,14 @@
 import React, {useEffect, useState} from 'react'
 import {submitComment} from '../serveces/index'
-type formdata = {
+interface formdata  {
     name: string,
     email: string,
     comment?: string,
+    slug?:string,
     storeData: boolean
 
 }
-const data: formdata = {
+const a: formdata = {
     name: "",
     email: "",
     comment: "",
@@ -17,7 +18,7 @@ const Commentsform = ({slug}:any) => {
     const [error, setError] = useState(false)
     const [localStorage, setLocalStorage] = useState(null);
     const [showSuccessMessage, setShowSuccessMessage] = useState(false)
-    const [formdata, setFormData] = useState < formdata > ({data})
+    const [formdata, setFormData] = useState ({ name: null, email: null, comment: null, storeData: false })
 
   useEffect(() => {
     setLocalStorage(window.localStorage);
@@ -55,11 +56,12 @@ const Commentsform = ({slug}:any) => {
             setError(true);
             return; 
          }
-        const commentObj = {
-            name ,
+        const commentObj   = {
+            name,
             email,
             comment,
-            slug
+            slug,
+            storeData: false
         };
         if (storeData) {
             window.localStorage.setItem('name', name)
