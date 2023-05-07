@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import moment from 'moment'
-import parse from 'react-html-parser';
+// import parse from 'react-html-parser';
 import {Comment} from './components-type'
 import {getComments} from '../serveces'
 import {comment} from 'postcss'
@@ -39,7 +39,7 @@ const Comment = ({slug}:any) => {
                             } </p>
                             <p className='whitespace-pre-line text-gray-600 w-full'>
                                 {
-                                parse(comment.comment)
+                                comment.comment
                             } </p>
                         </div>
                     ))
