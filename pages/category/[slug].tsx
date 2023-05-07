@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { useRouter } from 'next/router';
-
+// Posts
 import { getCategories, getCategoryPost   } from '../../serveces/index';
 import { PostCard, Categories } from '../../components/index';
+import { Posts } from '../../components/components-type';
 
-const CategoryPost = ({ posts }) => {
+const CategoryPost  :FC<{ posts: Posts[] }> = ({ posts }) => {
   const router = useRouter();
  
 
@@ -27,8 +28,12 @@ const CategoryPost = ({ posts }) => {
 };
 export default CategoryPost;
 
-// Fetch data at build time
-export async function getStaticProps({ params }) {
+type prop = {
+  params:{
+    slug : string
+  }
+}
+export async function getStaticProps({ params } : prop) {
   const posts = await (getCategoryPost(params.slug));
 
   return {
@@ -36,8 +41,6 @@ export async function getStaticProps({ params }) {
   };
 }
 
-// Specify dynamic routes to pre-render pages based on data.
-// The HTML is generated at build time and will be reused on each request.
 export async function getStaticPaths() {
   const categories = await getCategories();
   return {

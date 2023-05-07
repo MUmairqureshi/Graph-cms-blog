@@ -45,9 +45,13 @@ const PostsDetails = ({post} :Props) => {
 }
 
 export default PostsDetails
+type prop ={
+    params : {
+  slug : string
+    }
+}
 
-
-export async function getStaticProps({params}) {
+export async function getStaticProps({params} : prop) {
     const data = (await getPostDetails(params.slug)) 
     return {
         props: {
