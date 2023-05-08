@@ -1,5 +1,4 @@
-/* eslint-disable @next/next/no-img-element */
-/* eslint-disable react/jsx-no-comment-textnodes */
+'use client'
 import React, { FC, useEffect, useState } from 'react'
 import {Post} from './components-type'
 import {getRecentPosts , getSimilarPosts } from '../serveces/index'
