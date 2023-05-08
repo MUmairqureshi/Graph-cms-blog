@@ -142,7 +142,7 @@ export const getRecentPosts = async ( )=>{
 const result : {posts :Post[]} = await  graphqlClient.request(query);
 return result.posts
 } 
-export const getSimilarPosts = async (categories : string[], slug : string[]) => {
+export const getSimilarPosts = async (categories : string[], slug : string) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
       posts(
@@ -185,7 +185,7 @@ export const getCategories = async () =>{
 
 
 
-export const submitComment = async (obj : string) => {
+export const submitComment = async (obj : Comment) => {
   const result = await fetch('/api/comments', {
     method: 'POST',
     headers: {
