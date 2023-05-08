@@ -14,20 +14,11 @@ interface IFormData {
 
 const CommentsForm = ({ slug } : any) => {
   const [error, setError] = useState(false);
-  const [localStorage, setLocalStorage] = useState(null);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
   const [formData, setFormData] = useState<IFormData>({ name: "", email: "", comment: "", storeData: false });
 
 
-  useEffect(() => {
-    setLocalStorage(localStorage);
-    // const initalFormData = {
-    //   name: window.localStorage.getItem('name'),
-    //   email: window.localStorage.getItem('email'),
-    //   storeData: window.localStorage.getItem('name') || window.localStorage.getItem('email') ? true : false,
-    // };
-    // setFormData(initalFormData);
-  }, []);
+  
 
   const onInputChange = (e : any) => {
     const { target } = e;
