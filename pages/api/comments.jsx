@@ -2,9 +2,9 @@
 import { GraphQLClient, gql } from 'graphql-request';
 import { NextRequest, NextResponse } from 'next/server';
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
+const graphqlAPI  = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 // export a default function for API route to work
-export default async function asynchandler(req: { body: { name: any; email: any; comment: any; slug: any; }; } , res: { status: (arg0: number) => { (): any; new(): any; send: { (arg0: unknown): any; new(): any; }; }; } ) {
+export default async function asynchandler(req , res ) {
   const graphQLClient = new GraphQLClient(graphqlAPI, {
     headers: {
       authorization: `Bearer ${process.env.NEXT_PUBLIC_GRAPHCMS_ACCESS_TOKEN}`,
@@ -26,3 +26,4 @@ export default async function asynchandler(req: { body: { name: any; email: any;
 
   return res.status(200).send(result);
 }
+
