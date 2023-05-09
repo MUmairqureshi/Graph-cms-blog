@@ -26,7 +26,7 @@ const responsive = {
 
 export  const FeaturedPosts = () => {
   const [featuredPosts, setFeaturedPosts] = useState([]);
-  const [dataLoaded, setDataLoaded] = useState<Boolean>(false);
+  const [dataLoaded, setDataLoaded] = useState<boolean>(false);
 
   useEffect(() => {
     getFeaturedPosts().then((result) => {

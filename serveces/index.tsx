@@ -146,7 +146,8 @@ export const getSimilarPosts = async (categories : string[], slug : string) => {
   const query = gql`
     query GetPostDetails($slug: String!, $categories: [String!]) {
       posts(
-        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+        where: {slug_not: $slug, 
+          AND: {categories_some: {slug_in: $categories}}}
         last: 3
       ) {
         title
@@ -243,7 +244,7 @@ export const getFeaturedPosts = async () => {
     }   
   `;
 
-  const result : {posts : Featured } = await  graphqlClient.request(query);
+  const result : {posts : Post[]  } = await  graphqlClient.request(query);
 
   return result.posts;
 };

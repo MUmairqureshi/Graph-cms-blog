@@ -9,9 +9,9 @@ import Head from 'next/head'
 import bgimg from './bg.png'
 import Image from 'next/image'
 // import {PodtCard, Categories, PostWidget} from '../components/index'
-import {PostCard} from '../components/index'
+import {PostCard , PostWidget} from '../components/index'
 import Categories from '../components/Categories'
-import PostWidget from '../components/PostWidget'
+// import PostWidget from '../components/PostWidget'
 import {useState} from 'react'
 import { Posts } from '../components/components-type'
  
@@ -43,7 +43,7 @@ export default function Home({posts} : Props) {
                         </div>
                         <div className="lg:col-span-4 col-span-1">
                             <div className="lg:sticky relative top-8">
-                                <PostWidget  />
+                                <PostWidget    />
                                 <Categories/>
                             </div>
                         </div>

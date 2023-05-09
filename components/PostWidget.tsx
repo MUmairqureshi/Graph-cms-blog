@@ -5,7 +5,7 @@ import {getRecentPosts , getSimilarPosts } from '../serveces/index'
 
 interface  Props{
   slug?: string;
-  categories: string[];
+  categories?: string[];
 }
 import moment from 'moment';
 import Link from 'next/link';
@@ -29,11 +29,6 @@ const PostWidgey : FC<Props>  = ({ categories , slug}) => {
   console.log(relatedPosts)
   return (
  
-
-
-
-
-
   <div className="bg-white shadow-lg rounded-lg p-8 pb-12 mb-8">
       <h3 className="md:text-2xl  text-xl  mb-8 font-semibold border-b pb-4">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
       {relatedPosts.map((post, index) => (
