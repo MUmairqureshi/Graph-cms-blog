@@ -3,7 +3,7 @@ import {GetStaticProps, InferGetStaticPropsType} from 'next'
 // import useSWR from 'swr'
 import {FeaturedPosts} from '../sections/featuredPosts'
 
-import {getPosts } from '../serveces/index'
+import {getPosts } from '../services/index'
 // import {Inter} from 'next/font/google'
 import Head from 'next/head'
 import bgimg from './bg.png'
@@ -38,9 +38,7 @@ export default function Home({posts} : Props) {
                                     post
                                 }/>)
                         }
-                         
-                        
-                        </div>
+                                                 </div>
                         <div className="lg:col-span-4 col-span-1">
                             <div className="lg:sticky relative top-8">
                                 <PostWidget  />

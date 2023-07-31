@@ -1,7 +1,7 @@
  
 import Link from 'next/link'
 import React, {useEffect, useState} from 'react'
-import {getCategories} from '../serveces/index'
+import {getCategories} from '../services/index'
 import {Categories} from '../components/components-type'
 const Header = () => {
       const [categories, setCategories] = useState <Categories[]>([])

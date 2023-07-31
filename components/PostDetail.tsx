@@ -81,7 +81,7 @@ interface Porps {
         {post.title}
       </h1>
 
-      {post.content.raw.children.map((typeObj, index) => {
+      {post.content.raw.children.map((typeObj :any, index :any) => {
             const children = typeObj.children.map((item : any, itemindex : number) => getContentFragment(itemindex, item.text, item));
 
             return getContentFragment(index, children, typeObj, typeObj.type);

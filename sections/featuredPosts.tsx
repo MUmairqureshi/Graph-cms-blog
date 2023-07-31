@@ -3,7 +3,7 @@ import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
 import { FeaturedPostCard } from '../components';
-import { getFeaturedPosts } from '../serveces/index';
+import { getFeaturedPosts } from '../services/index';
 
 const responsive = {
   superLargeDesktop: {
@@ -25,12 +25,12 @@ const responsive = {
 };
 
 export  const FeaturedPosts = () => {
-  const [featuredPosts, setFeaturedPosts] = useState([]);
+  const [featuredPosts, setFeaturedPosts] = useState<any>([]);
   const [dataLoaded, setDataLoaded] = useState<Boolean>(false);
 
   useEffect(() => {
     getFeaturedPosts().then((result) => {
-      setFeaturedPosts(result);
+      setFeaturedPosts(result );
       setDataLoaded(true);
     });
   }, []);
@@ -54,7 +54,7 @@ export  const FeaturedPosts = () => {
   return (
     <div className="mb-8">
       <Carousel infinite customLeftArrow={customLeftArrow} customRightArrow={customRightArrow} responsive={responsive} itemClass="px-4">
-        {dataLoaded && featuredPosts.map((post, index) => (
+        {dataLoaded && featuredPosts.map((post : any,  index : any) => (
           <FeaturedPostCard key={index} post={post} />
         ))}
       </Carousel>

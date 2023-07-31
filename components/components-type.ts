@@ -1,5 +1,5 @@
 
-export interface IPostsData {
+export interface PostsData {
     postsConnection: {
       edges: Posts[];
     };

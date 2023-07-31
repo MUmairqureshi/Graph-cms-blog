@@ -2,15 +2,16 @@
 /* eslint-disable react/jsx-no-comment-textnodes */
 import React, { FC, useEffect, useState } from 'react'
 import {Post} from './components-type'
-import {getRecentPosts , getSimilarPosts } from '../serveces/index'
+import {getRecentPosts , getSimilarPosts } from '../services/index'
 
 interface  Props{
   slug? : string;
-  categories : string[]
+  categories? : string[] | any
 }
 import moment from 'moment';
 import Link from 'next/link';
-const PostWidgey : FC<Props>  = ({ categories , slug}) => {
+ 
+const PostWidgey : FC<Props>  = ({ categories , slug }) => {
   const [relatedPosts , setRelatedPosts] = useState<Post[]>([])
  
 
@@ -39,7 +40,7 @@ const PostWidgey : FC<Props>  = ({ categories , slug}) => {
       <h3 className="md:text-2xl  text-xl  mb-8 font-semibold border-b pb-4">{slug ? 'Related Posts' : 'Recent Posts'}</h3>
       {relatedPosts.map((post, index) => (
         <div key={index} className="flex items-center w-full mb-4">
-          <div className="   mb-4 flex-none">
+          <div className="    flex-none">
             <img
 
               alt={post.title}
@@ -49,8 +50,8 @@ const PostWidgey : FC<Props>  = ({ categories , slug}) => {
             />
           </div>
           <div className="flex-grow ml-4">
-            <p className="text-gray-500 md:text-xl ">{moment(post.createdAt).format('MMM DD, YYYY')}</p>
-            <Link href={`/post/${post.slug}`} className="md:text-2xl" key={index}>{post.title}</Link>
+            <p className="text-gray-500 md:text-md ">{moment(post.createdAt).format('MMM DD, YYYY')}</p>
+            <Link href={`/post/${post.slug}`} className="md:text-md" key={index}>{post.title}</Link>
           </div>
         </div>
       ))}
