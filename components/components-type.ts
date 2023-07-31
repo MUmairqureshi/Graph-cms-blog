@@ -8,9 +8,29 @@ export interface PostsData {
     node: Post;
     cursor?: string
   }
+  // export interface Post {
+  //   id: string;
+  //   author: Author
+  //   slug: string;
+  //   title: string;
+  //   createdAt: string;
+  //   featuredpost: string;
+  //   excerpt: string;
+  //   featuredImage: {
+  //     url: string;
+  //   };
+  //   categories: Categories[];
+  //   content: {
+  //     raw: any;
+  //   }; 
+  //   comments?: Comment
+  // }
+
+
+
   export interface Post {
     id: string;
-    author: Author
+    author: Author;
     slug: string;
     title: string;
     createdAt: string;
@@ -22,7 +42,7 @@ export interface PostsData {
     categories: Categories[];
     content: {
       raw: any;
-    }; 
+    };
     comments?: Comment
   }
   export interface Featured{
