@@ -1,5 +1,5 @@
 import { request , gql } from "graphql-request"
-import {Categories, Post, IPostsData , Featured , Comment} from '../components/components-type' 
+import {Categories, Post, PostsData , Featured , Comment} from '../components/components-type' 
 import { graphqlClient } from "./client";
 
 import React from 'react'
@@ -36,11 +36,11 @@ export const getPosts = async () => {
       }
     }
     `;
-  const data: IPostsData = await graphqlClient.request(query);
+  const data: PostsData = await graphqlClient.request(query);
   return data.postsConnection.edges;
 }
 
-export const getPostDetails = async (slug : string) => {
+export const getPostDetails = async (slug :string ) => {
   const query = gql`
   query GetPostDetails($slug: String!) {
     post(where: {slug: $slug}) {
@@ -87,7 +87,7 @@ export const getPostDetails = async (slug : string) => {
 
 
 
-export const getCategoryPost = async (slug : string) => {
+export const getCategoryPost = async (slug  : string) => {
   const query = gql`
     query GetCategoryPost($slug: String!) {
       postsConnection(where: {categories_some: {slug: $slug}}) {
@@ -119,7 +119,7 @@ export const getCategoryPost = async (slug : string) => {
     }
   `;
 
-  const result : IPostsData = await graphqlClient.request( query, { slug });
+  const result : PostsData = await graphqlClient.request( query, { slug });
 
   return result.postsConnection.edges;
 };
@@ -142,11 +142,13 @@ export const getRecentPosts = async ( )=>{
 const result : {posts :Post[]} = await  graphqlClient.request(query);
 return result.posts
 } 
-export const getSimilarPosts = async (categories : string[], slug : string[]) => {
+export const getSimilarPosts = async (categories : string[] , slug : string) => {
   const query = gql`
-    query GetPostDetails($slug: String!, $categories: [String!]) {
+    query GetPostDetails($slug: String!, $categories: [string!]) {
       posts(
-        where: {slug_not: $slug, AND: {categories_some: {slug_in: $categories}}}
+        where: {
+          slug_not: $slug, 
+          AND: {categories_some: {slug_in: $categories}}}
         last: 3
       ) {
         title
@@ -184,18 +186,13 @@ export const getCategories = async () =>{
 
 
 
-
-export const submitComment = async (obj : string) => {
+export const submitComment = async (obj: Comment) => {
   const result = await fetch('/api/comments', {
     method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(obj),
-  });
-
-  return result.json();
-};
+    body: JSON.stringify(obj)
+  })
+  return result.json()
+}
 
 
 
@@ -204,14 +201,13 @@ export const submitComment = async (obj : string) => {
 
 
 
-
-export const getComments  = async (slug : string) => {
+export const getComments  = async (slug  : any) => {
   const query = gql`
     query getComments($slug : String!) {
     comments(where:{post: {slug : $slug}}) {
-      name
-      createdAt
       comment
+      name
+      email
     }
   }
   `
