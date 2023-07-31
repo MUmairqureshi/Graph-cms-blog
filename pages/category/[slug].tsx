@@ -5,11 +5,11 @@ import { getCategories, getCategoryPost   } from '../../services/index';
  
 import {Posts } from '../../components/components-type'
 import { PostCard, Categories } from '../../components/index';
-interface propstype{
-  posts : Posts[]
-}
+// interface propstype{
+//   posts : Posts[]
+// }
 
-const CategoryPost = ({ posts } :propstype) => {
+const CategoryPost : FC<{ posts  :Posts[]}> = ({ posts }) => {
   const router = useRouter();
  
 
@@ -37,7 +37,7 @@ type Prop = {
       slug: string
   }
 }
- async function getStaticProps({ params } : Prop) {
+export async function getStaticProps({ params } : Prop) {
   const posts = await (getCategoryPost(params.slug));
 
   return {
@@ -45,7 +45,7 @@ type Prop = {
   };
 }
 
-  async function getStaticPaths() {
+export  async function getStaticPaths() {
   const categories = await getCategories();
   return {
     paths: categories.map(({ slug }) => ({ params: { slug } })),
