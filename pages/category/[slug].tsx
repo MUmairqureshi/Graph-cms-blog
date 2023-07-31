@@ -37,7 +37,7 @@ type Prop = {
       slug: string
   }
 }
-export async function getStaticProps({ params } : Prop) {
+ async function getStaticProps({ params } : Prop) {
   const posts = await (getCategoryPost(params.slug));
 
   return {
@@ -45,7 +45,7 @@ export async function getStaticProps({ params } : Prop) {
   };
 }
 
-export async function getStaticPaths() {
+  async function getStaticPaths() {
   const categories = await getCategories();
   return {
     paths: categories.map(({ slug }) => ({ params: { slug } })),
